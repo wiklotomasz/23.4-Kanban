@@ -1,5 +1,4 @@
 import Lane from '../models/lane';
-import Note from '../models/note';
 import uuid from 'uuid';
 
 export function getLanes(req, res) {
@@ -30,11 +29,12 @@ export function addLane(req, res) {
 }
 
 export function editLane(req, res) {
-	if (!req.body.name) {
+	let editedLane = prompt('Please enter column name');
+  editedLane.id = uuid();
+  if (!req.body.name) {
     	res.status(403).end();
   	}
-
-	req.body.name	
+  res.json(editedLane);
 }
 
 export function deleteLane(req, res) {

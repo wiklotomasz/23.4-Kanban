@@ -30,7 +30,11 @@ export function addNote(req, res) {
 }
 
 export function editNote(req, res) {
-
+    let editedNote = prompt('Please enter note name');
+    if (!req.body.name) {
+        res.status(403).end();
+      }
+    res.json(editedNote);
 }
 
 export function deleteNote(req, res) {
